@@ -1,0 +1,55 @@
+<ng-container *ngIf="viewUserListing; else noAccess">
+  <section class="listing-container" *ngIf="{
+    loading: loading$ | async,
+    users: users$ | async
+  } as data">
+    <section class="loader" *ngIf="data.loading">
+      <mat-spinner [diameter]="50"></mat-spinner>
+    </section>
+    <section class="list" *ngIf="!data.loading">
+      <div class="title">User Listing App</div>
+      <div></div>
+      <div class="table">
+        <table mat-table [dataSource]="data.users" class="mat-elevation-z8">
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let user"> {{user.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="city">
+            <th mat-header-cell *matHeaderCellDef> City </th>
+            <td mat-cell *matCellDef="let user"> {{user.city}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="companyName">
+            <th mat-header-cell *matHeaderCellDef> Company Name </th>
+            <td mat-cell *matCellDef="let user"> {{user.companyName}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="website">
+            <th mat-header-cell *matHeaderCellDef> Website </th>
+            <td mat-cell *matCellDef="let user"> {{user.website}} </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+    </section>
+  </section>
+</ng-container>
+<ng-template #noAccess>
+  <section class="no-access">
+    <div class="title">You do not have Access to User Listing!!</div>
+  </section>
+</ng-template>

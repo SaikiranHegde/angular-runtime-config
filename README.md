@@ -1,5 +1,8 @@
 # AngularRuntimeConfig
 
+Feature Toggle
+- Set VIEW_USER_LISTING to false in environment.ts to test feature toggling
+
 Docker Build/Run Commands
 
 1. Building image with environment(QA/Staging/Production)
