@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { mapTo, share, startWith } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { ConfigService } from 'src/app/config.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 
@@ -14,9 +14,11 @@ export class UserListingComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'email', 'city', 'companyName', 'website'];
   loading$: Observable<boolean>;
   users$: Observable<User[]>;
-  viewUserListing = environment?.features?.VIEW_USER_LISTING;
+  viewUserListing: boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private configService: ConfigService, private userService: UserService) {
+    this.viewUserListing = this.configService.getFeatureValue('VIEW_USER_LISTING');
+  }
 
   ngOnInit() {
     if (this.viewUserListing) {

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +8,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { UserListingComponent } from './listing/containers/user-listing/user-listing.component';
 import { UserService } from './listing/services/user.service';
+import { appLoader } from './app.loader';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,15 @@ import { UserService } from './listing/services/user.service';
     MatProgressSpinnerModule,
     MatTableModule
   ],
-  providers: [UserService],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appLoader,
+      deps: [ConfigService],
+      multi: true
+    },
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
