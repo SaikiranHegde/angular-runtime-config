@@ -5,15 +5,17 @@ Feature Toggle
 
 Docker Build/Run Commands
 
-1. Building image with environment(QA/Staging/Production)
+1. Building image
 
-    `docker build -f app.Dockerfile -t <tagName> . --build-arg env=<environment>`
+    `docker build -f app.Dockerfile -t <tagName> .`
 
-    Eg: `docker build -f app.Dockerfile -t app . --build-arg env=production`
+    Eg: `docker build -f app.Dockerfile -t app .`
 
-2. Running the image
+2. Running the image with runtime config
 
-    `docker run -d -p <port> --name <container-name> <image id>`
+    `docker run -d -p <port> --name <container-name> -v <Path to config file>:/dist/assets/config <image id>`
 
-    Eg: `docker run -d -p 4202:80 --name app 3c94d158d247`
+    If your config file path is `/Users/saikiranhegde/Documents/config/config.json` then run the command as below,
+
+    Eg: `docker run -d -p 4202:80 --name app -v /Users/saikiranhegde/Documents/config:/dist/assets/config 3c94d158d247`
 

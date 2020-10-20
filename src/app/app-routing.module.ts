@@ -5,10 +5,10 @@ import { UserListingComponent } from './listing/containers/user-listing/user-lis
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/listing', pathMatch: 'full'
+    path: 'listing', component: UserListingComponent
   },
   {
-    path: 'listing', component: UserListingComponent
+    path: '', redirectTo: '/listing', pathMatch: 'full'
   }
 ];
 

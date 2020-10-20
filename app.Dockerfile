@@ -5,8 +5,7 @@ COPY package.json package-lock.json /app/
 RUN npm ci
 
 COPY . .
-ARG env
-RUN ./node_modules/@angular/cli/bin/ng build --configuration=${env}
+RUN ./node_modules/@angular/cli/bin/ng build --configuration=production
 
 FROM nginx:1.17.1-alpine
 
