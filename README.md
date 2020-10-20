@@ -1,7 +1,7 @@
 # AngularRuntimeConfig
 
 Feature Toggle
-- Set VIEW_USER_LISTING to false in environment.ts to test feature toggling
+- Set VIEW_USER_LISTING to false in config.json to test feature toggling
 
 Docker Build/Run Commands
 

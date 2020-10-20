@@ -10,6 +10,7 @@ import { UserListingComponent } from './listing/containers/user-listing/user-lis
 import { UserService } from './listing/services/user.service';
 import { appLoader } from './app.loader';
 import { ConfigService } from './config.service';
+import { FeatureToggleModule } from './feature-toggle/feature-toggle.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfigService } from './config.service';
     BrowserAnimationsModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    MatTableModule
+    MatTableModule,
+    FeatureToggleModule
   ],
   providers: [
     {

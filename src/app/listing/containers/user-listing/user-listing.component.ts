@@ -15,6 +15,7 @@ export class UserListingComponent implements OnInit {
   loading$: Observable<boolean>;
   users$: Observable<User[]>;
   viewUserListing: boolean;
+  featureName = 'VIEW_USER_LISTING';
 
   constructor(private configService: ConfigService, private userService: UserService) {
     this.viewUserListing = this.configService.getFeatureValue('VIEW_USER_LISTING');
